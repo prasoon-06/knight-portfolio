@@ -1,0 +1,335 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Knight’s Journey</title>
+
+  <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+</head>
+
+<body>
+   <div id="story-bg" class="story-bg"></div>
+<div class="story-bg-overlay"></div>
+
+  <header class="hud">
+    <div class="hud__left">
+      <div class="logo">⚔️</div>
+      <div class="title">
+        <h1 class="name">
+          {% if profile and profile.display_name %}
+            {{ profile.display_name }}
+          {% else %}
+            [Your Name]
+          {% endif %}
+        </h1>
+
+        <p class="tagline">
+          {% if profile and profile.tagline %}
+            {{ profile.tagline }}
+          {% else %}
+            A Knight’s Journey — scroll to continue
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <nav class="hud__right">
+      <a href="#chapter-newborn">Birth</a>
+      <a href="#chapter-teen">Teen</a>
+      <a href="#chapter-adult">Adult</a>
+      <a href="#chapter-old">Old</a>
+      <a href="#chapter-sunset">End</a>
+    </nav>
+  </header>
+
+  <main class="story">
+
+    <!-- CHAPTER 1: About Me -->
+    <section class="chapter" id="chapter-newborn" data-stage="newborn">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Chapter I — About Me</h2>
+
+        <p class="chapter__text">
+          {% if profile and profile.about_me %}
+            {{ profile.about_me|linebreaksbr }}
+          {% else %}
+            [Write your About Me in admin later — this will show automatically.]
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="chapter__visual">
+        {% if profile and profile.profile_image %}
+          <img class="profile-pic" src="{{ profile.profile_image.url }}" alt="Profile photo">
+        {% else %}
+          <div class="image-placeholder">Upload your photo in Admin → Site Profile → Profile image</div>
+        {% endif %}
+      </div>
+    </section>
+
+
+    <!-- CHAPTER 2: Philosophy -->
+    <section class="chapter" id="chapter-boy" data-stage="boy">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Chapter II — A Small Blade</h2>
+        <p class="chapter__text">
+          My philosophy is simple: I treat progress like a grind that never stops. I don’t wait for motivation—I build discipline by showing up daily, even when the work feels slow. I focus on learning step by step, improving one weakness at a time, and turning mistakes into feedback instead of excuses. When I start something, I push it until it becomes real—whether it’s code, a project, or a skill I want to master. I’m not chasing quick results; I’m chasing growth that lasts. Every small improvement is another level unlocked, and every challenge is another fight that makes me stronger. I want my achievements to speak for me, and I’m willing to put in the effort to take my work as high as it can go.
+        </p>
+      </div>
+
+      <!-- RIGHT SIDE: ONE vertical image from Admin -->
+      <div class="chapter__visual">
+        {% if c2_img %}
+          <img class="chapter-image" src="{{ c2_img.image.url }}" alt="Chapter II image">
+        {% else %}
+          <div class="image-placeholder">Upload a portrait image in Admin → Chapter Images (Chapter II)</div>
+        {% endif %}
+      </div>
+    </section>
+
+
+    <!-- CHAPTER 3: Teenage -->
+    <section class="chapter" id="chapter-teen" data-stage="teen">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Chapter III — The Trial Grounds</h2>
+        <p class="chapter__text">
+          [Later: 10th/12th, school journey, turning point.]
+        </p>
+
+        <div class="info-block">
+          <h3>Name</h3>
+          <p>
+            {% if profile and profile.display_name %}
+              {{ profile.display_name }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>10th Graduate</h3>
+          <p>
+            {% if profile and profile.tenth %}
+              {{ profile.tenth }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>12th Graduate</h3>
+          <p>
+            {% if profile and profile.twelfth %}
+              {{ profile.twelfth }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: ONE vertical image from Admin -->
+      <div class="chapter__visual">
+        {% if c3_img %}
+          <img class="chapter-image chapter-image--horizontal" src="{{ c3_img.image.url }}" alt="Chapter III image">
+        {% else %}
+          <div class="image-placeholder">Upload a portrait image in Admin → Chapter Images (Chapter III)</div>
+        {% endif %}
+      </div>
+    </section>
+
+
+    <!-- CHAPTER 4: Adult -->
+    <section class="chapter" id="chapter-adult" data-stage="adult">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Chapter IV — The Oath</h2>
+        <p class="chapter__text">
+          [Later: college, skills, main direction.]
+        </p>
+
+        <div class="info-block">
+          <h3>College</h3>
+          <p>
+            {% if profile and profile.college %}
+              {{ profile.college }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>Tech Stack</h3>
+          <p>
+            {% if profile and profile.tech_stack %}
+              {{ profile.tech_stack }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: ONE vertical image from Admin -->
+      <div class="chapter__visual">
+        {% if c4_img %}
+          <img class="chapter-image chapter-image--horizontal" src="{{ c4_img.image.url }}" alt="Chapter IV image">
+        {% else %}
+          <div class="image-placeholder">Upload a portrait image in Admin → Chapter Images (Chapter IV)</div>
+        {% endif %}
+      </div>
+    </section>
+
+
+    <!-- CHAPTER 5: Middle Age -->
+    <section class="chapter" id="chapter-middle" data-stage="middle">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Chapter V — The Battles</h2>
+        <p class="chapter__text">
+          [Later: projects, achievements, battles with demons (problems solved).]
+        </p>
+
+        <div class="info-block">
+          <h3>Projects</h3>
+          {% if projects and projects|length > 0 %}
+            <ul class="project-list">
+              {% for p in projects %}
+                <li class="project-item">
+                  <strong>{{ p.title }}</strong>
+                  {% if p.one_liner %}<div class="muted">{{ p.one_liner }}</div>{% endif %}
+                  {% if p.tech_stack %}<div class="accent">{{ p.tech_stack }}</div>{% endif %}
+
+                  <div class="links">
+                    {% if p.repo_url %}<a href="{{ p.repo_url }}" target="_blank" rel="noopener">Repo</a>{% endif %}
+                    {% if p.live_url %}<a href="{{ p.live_url }}" target="_blank" rel="noopener">Live</a>{% endif %}
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>[Will be added later]</p>
+          {% endif %}
+        </div>
+
+        <div class="info-block">
+          <h3>Currently Working On</h3>
+          <p>
+            {% if profile and profile.currently_working_on %}
+              {{ profile.currently_working_on|linebreaksbr }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: ONE vertical image from Admin -->
+      <div class="chapter__visual">
+        {% if c5_img %}
+          <img class="chapter-image" src="{{ c5_img.image.url }}" alt="Chapter V image">
+        {% else %}
+          <div class="image-placeholder">Upload a portrait image in Admin → Chapter Images (Chapter V)</div>
+        {% endif %}
+      </div>
+    </section>
+
+
+    <!-- CHAPTER 6: Old Age (exactly 3 images) -->
+    <section class="chapter" id="chapter-old" data-stage="old">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Chapter VI — The Last Stand</h2>
+        <p class="chapter__text">
+          [Later: maturity, lessons, philosophy, what you stand for.]
+        </p>
+
+        <div class="info-block">
+          <h3>Hobbies</h3>
+          <p>
+            {% if profile and profile.hobbies %}
+              {{ profile.hobbies|linebreaksbr }}
+            {% else %}
+              [Will be added later]
+            {% endif %}
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: EXACTLY 3 images from Admin -->
+      <div class="chapter__visual">
+        {% if c6_imgs and c6_imgs|length > 0 %}
+          <div class="hobby-gallery">
+            {% for img in c6_imgs %}
+              <img class="hobby-pic" src="{{ img.image.url }}" alt="Chapter VI image {{ forloop.counter }}">
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="image-placeholder">Upload 3 images in Admin → Chapter Images (Chapter VI)</div>
+        {% endif %}
+      </div>
+    </section>
+
+
+    <!-- FINAL: Sunset -->
+    <section class="chapter chapter--final" id="chapter-sunset" data-stage="sunset">
+      <div class="chapter__content">
+        <h2 class="chapter__title">Epilogue — The Sunset</h2>
+        <p class="chapter__text">
+          [Final scene: knight sitting on a stump looking at the sunset.]
+        </p>
+
+        <div class="info-block">
+          <h3>Contact</h3>
+
+          <div class="contact-links">
+            {% if profile and profile.email %}
+              <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+            {% else %}
+              <span class="muted">[Email later]</span>
+            {% endif %}
+
+            {% if profile and profile.github_url %}
+              <a href="{{ profile.github_url }}" target="_blank" rel="noopener">GitHub</a>
+            {% else %}
+              <span class="muted">[GitHub later]</span>
+            {% endif %}
+
+            {% if profile and profile.linkedin_url %}
+              <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>
+            {% else %}
+              <span class="muted">[LinkedIn later]</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter__visual">
+        <div class="sunset" aria-label="Sunset scene placeholder"></div>
+        <div class="scene-hint">A quiet end. Golden-brown mood.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{% static 'portfolio/js/main.js' %}"></script>
+<audio id="bg-music" preload="auto" loop playsinline>
+
+  <source src="{% static 'portfolio/audio/golden_brown.mp3' %}" type="audio/mpeg">
+</audio>
+
+
+
+<button id="music-toggle" class="music-btn" type="button" aria-label="Toggle background music">
+  ▶ Music
+</button>
+
+<div class="music-mini">
+  <label class="music-mini__label" for="music-volume">Vol</label>
+  <input id="music-volume" class="music-mini__slider" type="range" min="0" max="1" step="0.01" value="0.35">
+</div>
+
+</body>
+</html>
